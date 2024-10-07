@@ -48,7 +48,7 @@
     <form method="GET" action="{{route('day.toggle', ['day'=>$day])}}">
         @csrf
         @method('PUT')
-        <button type="submit" class="toggleColorEvent place-content-center text-center size-20 rounded-lg border bg-green-300 text-green-500">
+        <button type="submit" class="place-content-center text-center size-20 rounded-lg border bg-green-300 text-green-500">
             {{$day->name}}
         </button>
     </form>
@@ -58,7 +58,7 @@
     <form method="GET" action="{{route('day.toggle', ['day'=>$day])}}">
         @csrf
         @method('PUT')
-        <button type="submit" class="toggleColorEvent place-content-center text-center size-20 rounded-lg border bg-rose-300 text-rose-500">
+        <button type="submit" class="place-content-center text-center size-20 rounded-lg border bg-rose-300 text-rose-500">
             {{$day->name}}
         </button>
     </form>

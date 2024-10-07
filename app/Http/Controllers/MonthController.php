@@ -15,10 +15,24 @@ class MonthController extends Controller
      */
     public function index()
     {
-        // $day = Day::get();
-        $month = Month::latest()->paginate(12);
-        $year = Month::orderBy('year','desc')->first();
+        if(request('year')){
+            $month = Month::where('year', '=', request('year'))->get();
+            $year = Month::where('year', '=', request('year'))->first();
+            // if($month === null){
+            //     $year = Month::latest()->first();
+            //     dd($year);
+            //     return view('year.add_month', ['year' => $year]);
+            // }
+            
+            return view('year.screen', ['months' => $month, 'year'=> $year]);
+        }else{
+        $month = Month::latest()->take(12)->get();
+        
+        $year = Month::latest()->first();
         return view('year.screen', ['months' => $month, 'year'=> $year]);
+        }
+
+   
     }
 
     /**
@@ -40,7 +54,7 @@ class MonthController extends Controller
         $indexes = Month::createName($year);
         $days = Day::createDay($indexes);
         $months = Month::latest()->paginate(12);
-        return redirect()->back();
+        return redirect()->route('months.index');
     }
 
     /**

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+<head >
+<link rel="stylesheet" href="css/app.css/">
+</head>
+
 @section('context')
 
 
@@ -11,16 +15,15 @@
     </div>
 
     <form method="GET" action="{{route('months.index')}}">
-                <?php 
-            
-        ?>
-        <button>
+        <input type="hidden" name="year" value="{{$year->year-1}}">
+        <button type="submit">
             ◀
         </button>
     </form>
 
     <form>
-        <button>
+        <input type="hidden" name="year" value="{{$year->year+1}}">
+        <button type="submit">
             ▶
         </button>
     </form>
@@ -51,7 +54,7 @@
 <div class="place-content-center grid grid-rows-1 grid-flow-col text-sm-center">
     <form method="post" action="{{route('months.store' )}}">
         @csrf
-        <button type="submit" class="border-solid border-2 border-lime-300 ">
+        <button type="submit" id="button-48" class="button-48">
             Make new year
         </button>
     </form>
